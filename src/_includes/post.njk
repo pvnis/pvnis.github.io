@@ -1,0 +1,19 @@
+---
+layout: base.njk
+---
+<article class="post wrap">
+  <header class="post-head">
+    <p class="kicker">{% for t in tags %}{% if t != "posts" %}<span>{{ t }}</span>{% endif %}{% endfor %}</p>
+    <h1>{{ title }}</h1>
+    {% if description %}<p class="dek">{{ description }}</p>{% endif %}
+    <p class="byline">
+      {% if author %}{{ author }} · {% endif %}<time datetime="{{ page.date | isoDate }}">{{ page.date | readableDate }}</time> · {{ content | readingTime }}
+    </p>
+  </header>
+  <div class="prose">
+    {{ content | safe }}
+  </div>
+  <footer class="post-foot">
+    <a href="/">← All writing</a>
+  </footer>
+</article>

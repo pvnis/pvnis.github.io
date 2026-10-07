@@ -1,0 +1,20 @@
+---
+layout: base.njk
+---
+<section class="hero wrap">
+  <h1>{{ site.tagline }}</h1>
+  <p>Engineering write-ups from <a href="/about/">Pavonis</a>: what we built, what broke, and the measurements that told us why.</p>
+</section>
+
+<section class="wrap post-list">
+  {%- for post in collections.posts | reverse %}
+  <a class="post-card" href="{{ post.url }}">
+    <time datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
+    <h2>{{ post.data.title }}</h2>
+    {% if post.data.description %}<p>{{ post.data.description }}</p>{% endif %}
+    <span class="more">Read →</span>
+  </a>
+  {%- else %}
+  <p>No posts yet.</p>
+  {%- endfor %}
+</section>
